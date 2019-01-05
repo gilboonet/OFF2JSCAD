@@ -29,7 +29,9 @@ var fl, nbs, nbPts, nbPolys, points, i, polys, f, pts, j;
 			pts.push(points[nbs[j]].pos);
 		}
 	    // create the polygon
-		f.push(CSG.Polygon.createFromPoints(pts).flipped());
+	    var poly = CSG.Polygon.createFromPoints(pts);
+	    if(pts.length >3) poly = poly.flipped();
+		f.push(poly);		
 	}
 	return CSG.fromPolygons(f);
 }
